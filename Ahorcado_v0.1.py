@@ -25,10 +25,11 @@ lista=[]
     
     #comprobar palabras(comparar con el json, hacerlas minusculas, procesar tildes, asegurar el uso de solo letras, no repetir palbras ingresadas)
 while True:
-    palabraog=input('Ingresa una palabra (Enter para terminar)')
+    palabraog=input('Ingresa una palabra (Enter para terminar):').strip()
     palabraog=palabraog.lower()
     if palabraog=="":
         if len(lista)==0:
+            print('No se ingresaron palabras')
             continue
         else:
             break
@@ -55,11 +56,14 @@ while True:
         r=r.lower()
         r=tildes(r)
         if r=="si" or r=="s":
-            lista.append(palabra2)
+            if palabra2 not in lista:
+                lista.append(palabra2)
+            else:
+                print("La palabra ya fue ingresada.")
 
     #imprimir lista de palabras ingresadas 
 print("Lista completada.")
-print(lista)
+#print(lista)
 
 #PARTE 2
 import random
@@ -68,14 +72,14 @@ def Parte2(Base):
     casillas=['_']*len(palabrasecreta)
     contarfallos=0
     letrasusadas=[]
-    return palabrasecreta, casillas, contarfallos, Letrasusadas
+    return palabrasecreta, casillas, contarfallos, letrasusadas
 #PARTE 3
 def turno (palabrasecreta, casillas, contarfallos, letrasusadas):
  # condicion, fallos < 10 y que aun queden letras por adivinar
  while contarfallos < 10 and "_" in casillas:
     
     # pedimos palabra por consola
-    letra_ingresada = input("Adivina una letra: ").upper()
+    letra_ingresada = input("Adivina una letra: ").upper().strip()
     if len(letra_ingresada) !=1 or letra_ingresada not in 'QWERTYUIOPASDFGHJKLÑZXCVBNM':
         print('Ingresa solo una letra del abecedario')
         continue
@@ -101,10 +105,13 @@ def turno (palabrasecreta, casillas, contarfallos, letrasusadas):
     if acierto == False:
         contarfallos = contarfallos + 1
         
-    Mostrarahorcado(contarfallos) 
+    ganador(casillas, palabrasecreta, contarfallos)
+    if "_" not in casillas or contarfallos==10:
+        break
     print(" ".join(casillas))
     print(f"Letras usadas: {letrasusadas}")
     print(f"Fallos: {contarfallos}/10\n")
+    
     
  return casillas, contarfallos
 #Parte 4
@@ -264,13 +271,13 @@ def Mostrarahorcado(contador):
 
 def ganador (letrascorrectas, palabrasecreta, contador):
     if Palabracompleta(letrascorrectas, palabrasecreta):
-        #Mostrarahorcado(contador)
-        print (f"Felicidades, ganaste, la palabra era: {palabrasecreta}")
+        Mostrarahorcado(contador)
+        print (f"Felicidades, ganaste humano, la palabra era: {palabrasecreta}")
     elif contador==10:
-        #Mostrarahorcado(10)
-        print(f"Perdiste, la palabra era: {palabrasecreta}")
-    #else:
-        #Mostrarahorcado(contador)
+        Mostrarahorcado(10)
+        print(f"Perdiste, ganó el computador, la palabra era: {palabrasecreta}")
+    else:
+        Mostrarahorcado(contador)
 
 #Integración de las partes:
 
@@ -280,9 +287,5 @@ while jugar:
     Mostrarahorcado(0)
     print(" ".join(casillas))
     casillas, contarfallos=turno (palabrasecreta, casillas, contarfallos, letrasusadas)
-    ganador(casillas, palabrasecreta, contarfallos)
-    r=input("Jugar de nuevo?: (si/no)")
+    r=input("Jugar de nuevo?: (si/no)").strip()
     jugar=tildes(r.lower()) in ('si','s')
-
-
-
