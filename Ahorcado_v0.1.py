@@ -2,7 +2,7 @@
 #Belmar Araus, Benjamín Alexander
 #Mendoza Faúndez, Daniel Helaman
 #Penroz Gallardo, Erick Alexander
-#Rivera Vasquez, Felipe Andrés
+#Rivera Vásquez, Felipe Andrés
 
 #al ingresar texto vacio se termina el pedir palabras
 
@@ -18,6 +18,12 @@ def tildes(t):
     t=t.replace("í", "i")
     t=t.replace("ó", "o")
     t=t.replace("ú", "u")
+    t=t.replace("Á", "A")
+    t=t.replace("É", "E")
+    t=t.replace("Í", "I")
+    t=t.replace("Ó", "O")
+    t=t.replace("Ú", "U")
+    
     return t
 
     #crear lista
@@ -44,8 +50,8 @@ while True:
     if k==1:
         continue
     if palabra2 in fuente:
-        if palabra2 not in lista:
-            lista.append(palabra2)
+        if palabraog not in lista:
+            lista.append(palabraog)
         else: 
             print("La palabra ya fue ingresada.")
     
@@ -56,8 +62,8 @@ while True:
         r=r.lower()
         r=tildes(r)
         if r=="si" or r=="s":
-            if palabra2 not in lista:
-                lista.append(palabra2)
+            if palabraog not in lista:
+                lista.append(palabraog)
             else:
                 print("La palabra ya fue ingresada.")
 
@@ -94,8 +100,8 @@ def turno (palabrasecreta, casillas, contarfallos, letrasusadas):
     
     # con un ciclo while recorremos la palabra 
     while i < n:
-        if palabrasecreta[i] == letra_ingresada:    #validamos que la letra ingresada este en la palabra
-            casillas[i] = letra_ingresada
+        if tildes(palabrasecreta[i]) == tildes(letra_ingresada):    #validamos que la letra ingresada este en la palabra
+            casillas[i] = palabrasecreta[i] #letra_ingresada
             acierto = True
         
         # Incrementar el contador para seguir recorriendo la palabra
@@ -272,9 +278,12 @@ def Mostrarahorcado(contador):
 def ganador (letrascorrectas, palabrasecreta, contador):
     if Palabracompleta(letrascorrectas, palabrasecreta):
         Mostrarahorcado(contador)
-        print (f"Felicidades, ganaste humano, la palabra era: {palabrasecreta}")
+        print(" ".join(casillas))
+        print (f"\nFelicidades, ganaste humano, la palabra era: {palabrasecreta}")
+        
     elif contador==10:
         Mostrarahorcado(10)
+        print(f"Fallos: {contador}/10\n")
         print(f"Perdiste, ganó el computador, la palabra era: {palabrasecreta}")
     else:
         Mostrarahorcado(contador)
@@ -289,3 +298,4 @@ while jugar:
     casillas, contarfallos=turno (palabrasecreta, casillas, contarfallos, letrasusadas)
     r=input("Jugar de nuevo?: (si/no)").strip()
     jugar=tildes(r.lower()) in ('si','s')
+
