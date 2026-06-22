@@ -60,7 +60,7 @@ while True:
     #extra agregar palabras que no esten en el diccionario
     else:
         print("No se puede garantizar que la palabra sea real.")
-        r=input("Desea usarla de todas formas?: (si/no)")
+        r=input("¿Desea usarla de todas formas?: (si/no)")
         r=r.lower()
         r=tildes(r)
         if r=="si" or r=="s":
@@ -298,6 +298,6 @@ while jugar:
     Mostrarahorcado(0)
     print(" ".join(casillas))
     casillas, contarfallos=turno (palabrasecreta, casillas, contarfallos, letrasusadas)
-    r=input("Jugar de nuevo?: (si/no)").strip()
+    r=input("¿Jugar de nuevo?: (si/no)").strip()
     jugar=tildes(r.lower()) in ('si','s')
 
