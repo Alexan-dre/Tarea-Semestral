@@ -18,11 +18,13 @@ def tildes(t):
     t=t.replace("í", "i")
     t=t.replace("ó", "o")
     t=t.replace("ú", "u")
+    t=t.replace("ü", "u")  
     t=t.replace("Á", "A")
     t=t.replace("É", "E")
     t=t.replace("Í", "I")
     t=t.replace("Ó", "O")
     t=t.replace("Ú", "U")
+    t=t.replace("Ü", "U")
     
     return t
 
