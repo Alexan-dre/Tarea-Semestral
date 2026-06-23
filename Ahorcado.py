@@ -73,6 +73,7 @@ while True:
 
     #imprimir lista de palabras ingresadas 
 print("Lista completada.")
+#print(lista)
 
 #Parte 2: Inicialización del juego.
 #Se selecciona una palabra al azar y se preparan las variables de control
@@ -301,4 +302,4 @@ while jugar:
     casillas, contarfallos=turno (palabrasecreta, casillas, contarfallos, letrasusadas)
     r=input("¿Jugar de nuevo?: (si/no)").strip()
     jugar=tildes(r.lower()) in ('si','s')
-
+    
