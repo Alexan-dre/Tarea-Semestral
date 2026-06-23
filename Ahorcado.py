@@ -73,7 +73,6 @@ while True:
 
     #imprimir lista de palabras ingresadas 
 print("Lista completada.")
-#print(lista)
 
 #Parte 2: Inicialización del juego.
 #Se selecciona una palabra al azar y se preparan las variables de control
