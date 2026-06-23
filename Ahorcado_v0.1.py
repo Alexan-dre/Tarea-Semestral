@@ -4,14 +4,16 @@
 #Penroz Gallardo, Erick Alexander
 #Rivera Vásquez, Felipe Andrés
 
-#al ingresar texto vacio se termina el pedir palabras
+import json
+import random
+#Parte 1: Ingreso de palabras y validación
+#al ingresar texto vacío se termina el pedir palabras
 
     #poner lista de palabras
-import json
 with open("spanishc-t.json", "r", encoding="utf-8")as trabajo:
     fuente=json.load(trabajo)
    
-    #quitar tildes
+    #Normalización de palabras
 def tildes(t):
     t=t.replace("á", "a")
     t=t.replace("é", "e")
@@ -73,15 +75,15 @@ while True:
 print("Lista completada.")
 #print(lista)
 
-#PARTE 2
-import random
+#Parte 2: Inicialización del juego.
+#Se selecciona una palabra al azar y se preparan las variables de control
 def Parte2(Base):
     palabrasecreta=random.choice(Base).upper()
     casillas=['_']*len(palabrasecreta)
     contarfallos=0
     letrasusadas=[]
     return palabrasecreta, casillas, contarfallos, letrasusadas
-#PARTE 3
+#PARTE 3: Ciclo de turnos
 def turno (palabrasecreta, casillas, contarfallos, letrasusadas):
  # condicion, fallos < 10 y que aun queden letras por adivinar
  while contarfallos < 10 and "_" in casillas:
@@ -122,7 +124,7 @@ def turno (palabrasecreta, casillas, contarfallos, letrasusadas):
     
     
  return casillas, contarfallos
-#Parte 4
+#Parte 4: Fin del juego.
 
 def Palabracompleta(letrascorrectas,palabrasecreta):
     for i in palabrasecreta:
