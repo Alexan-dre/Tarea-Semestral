@@ -1,8 +1,8 @@
 #Integrantes:
-#Belmar Araus, Benjamín Alexander
-#Mendoza Faúndez, Daniel Helaman
-#Penroz Gallardo, Erick Alexander
-#Rivera Vásquez, Felipe Andrés
+#Belmar Araus, Benjamín Alexander 2024421671
+#Mendoza Faúndez, Daniel Helaman 2026429091
+#Penroz Gallardo, Erick Alexander 2026452298
+#Rivera Vásquez, Felipe Andrés 2024434560
 
 import json
 import random
