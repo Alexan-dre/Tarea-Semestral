@@ -275,7 +275,7 @@ def Mostrarahorcado(contador):
     |                  
     |                  
     """ ]
-    # El contador deberia iterar en otra funcion por lo cual aqui solo contemple que se imprima segun la iteracion del contador
+    # Selecciona y despliega la figura ASCII correspondiente al índice del contador de fallos.
     print(L[contador])
     
 
